@@ -7,15 +7,35 @@ export const fetchPeptides = async () => {
     });
     const csvData = await response.text();
     
-    // Simple CSV parser that handles basic rows
+    // Robust CSV parser that handles quoted fields (like "$1,600")
+    const parseCSVLine = (line) => {
+      const values = [];
+      let currentField = '';
+      let insideQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          insideQuotes = !insideQuotes;
+        } else if (char === ',' && !insideQuotes) {
+          values.push(currentField.trim().replace(/^"|"$/g, ''));
+          currentField = '';
+        } else {
+          currentField += char;
+        }
+      }
+      values.push(currentField.trim().replace(/^"|"$/g, ''));
+      return values;
+    };
+
     const lines = csvData.split('\n').filter(line => line.trim() !== '');
-    const headers = lines[0].split(',');
+    const headers = parseCSVLine(lines[0]);
     
     const data = lines.slice(1).map(line => {
-      const values = line.split(',');
+      const values = parseCSVLine(line);
       const obj = {};
       headers.forEach((header, index) => {
-        obj[header.trim()] = values[index]?.trim();
+        obj[header] = values[index];
       });
       return obj;
     });

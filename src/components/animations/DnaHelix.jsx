@@ -20,7 +20,7 @@ const DnaHelix = () => {
       // Pulse nodes
       nodes.forEach((node, i) => {
         gsap.to(node, {
-          fill: '#5EEAC4',
+          fill: 'var(--accent-hover)',
           r: 4,
           duration: 1 + Math.random(),
           repeat: -1,

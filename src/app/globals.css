@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
-/* ── Preset 2 — Helix (Recovery / Anti-Aging / Longevity) ─────────────── */
+/* ── Preset: Aether (Precision / Clinical / Recovery) — White & Blue ─────────────── */
 :root {
   /* Palette */
-  --bg:                #080C0C;
-  --surface:           #0F1515;
-  --surface-elevated:  #162020;
-  --glow-primary:      #2DD4A8;
-  --glow-secondary:    #1A9E7A;
-  --glow-tertiary:     #0E6B52;
-  --glow-primary-rgb:  45, 212, 168;
-  --glow-secondary-rgb: 26, 158, 122;
-  --accent:            #2DD4A8;
-  --accent-hover:      #5EEAC4;
-  --text-primary:      #F0FDFA;
-  --text-secondary:    #94A3A8;
-  --text-subtle:       #5F7275;
-  --border:            rgba(45, 212, 168, 0.15);
-  --border-subtle:     rgba(255, 255, 255, 0.06);
+  --bg:                #FFFFFF;
+  --surface:           #F8FAFC;
+  --surface-elevated:  #F1F5F9;
+  --glow-primary:      #2563EB;
+  --glow-secondary:    #3B82F6;
+  --glow-tertiary:     #60A5FA;
+  --glow-primary-rgb:  37, 99, 235;
+  --glow-secondary-rgb: 59, 130, 246;
+  --accent:            #2563EB;
+  --accent-hover:      #1D4ED8;
+  --text-primary:      #0F172A;
+  --text-secondary:    #475569;
+  --text-subtle:       #94A3B8;
+  --border:            rgba(37, 99, 235, 0.15);
+  --border-subtle:     rgba(15, 23, 42, 0.06);
 
   /* Spacing */
   --space-xs:   4px;
@@ -141,19 +141,19 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   color: var(--bg);
 }
 
-/* ── Tag Pill ─────────────────────────────────────────────────────────── */
 .tag-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: 99px;
   padding: 6px 16px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-secondary);
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.04);
 }
 .tag-dot {
   width: 6px;
@@ -176,9 +176,9 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   transition: all 0.35s ease;
 }
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.01);
   border-color: var(--accent);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 20px rgba(45, 212, 168, 0.15);
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08), 0 0 30px rgba(37, 99, 235, 0.1);
 }
 
 /* ── Navbar ───────────────────────────────────────────────────────────── */
@@ -196,9 +196,9 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   border-bottom: 1px solid transparent;
 }
 .navbar.scrolled {
-  background: rgba(8, 12, 12, 0.87);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
-  border-color: var(--border-subtle);
+  border-color: rgba(15, 23, 42, 0.08);
 }
 .nav-logo {
   font-size: 1.125rem;
@@ -505,9 +505,9 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   transition: all 0.35s ease;
 }
 .product-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.01);
   border-color: var(--accent);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 20px rgba(45, 212, 168, 0.15);
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08), 0 0 30px rgba(37, 99, 235, 0.1);
 }
 .product-image {
   width: 100%;
@@ -554,8 +554,8 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
 }
 .value-card:hover {
   border-color: var(--accent);
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 20px rgba(45, 212, 168, 0.15);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.06), 0 0 20px rgba(37, 99, 235, 0.08);
 }
 .value-icon { color: var(--accent); margin-bottom: 20px; }
 .value-title { font-size: 1.375rem; font-weight: 400; margin-bottom: 12px; }
@@ -769,10 +769,10 @@ table.products-table td {
   vertical-align: middle;
 }
 table.products-table tr:last-child td { border-bottom: none; }
-table.products-table tr:hover td { color: var(--text-primary); background: rgba(255, 255, 255, 0.02); }
+table.products-table tr:hover td { color: var(--text-primary); background: rgba(15, 23, 42, 0.015); }
 
 .price-single { color: var(--accent); font-weight: 600; font-family: var(--font-mono); }
-.price-bulk { color: var(--glow-primary); font-size: 0.8125rem; font-family: var(--font-mono); opacity: 0.9; }
+.price-bulk { color: var(--glow-secondary); font-size: 0.8125rem; font-family: var(--font-mono); font-weight: 500; }
 .dose-tag { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--glow-primary); font-weight: 500; }
 .status-pill {
   display: inline-flex;

@@ -6,12 +6,16 @@ import GlowOrb from './GlowOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import ProtocolSelector from './animations/ProtocolSelector';
+import LabVerify from './animations/LabVerify';
+import BiometricTracker from './animations/BiometricTracker';
+
 const STEPS = [
   {
     num: '01',
     title: 'Select Your Protocol',
     desc: 'Browse our curated range of research-grade peptides filtered by goal — recovery, longevity, cognition, or performance. Each product includes a full science brief and COA.',
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80',
+    Animation: ProtocolSelector,
     badge: 'COA Published',
     reverse: false,
   },
@@ -19,7 +23,7 @@ const STEPS = [
     num: '02',
     title: 'Lab-Verified & Shipped',
     desc: 'Your order is pulled from temperature-controlled inventory, cold-packed, and dispatched the same day. Batch COA included with every order.',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80',
+    Animation: LabVerify,
     badge: 'Same-Day Dispatch',
     reverse: true,
   },
@@ -27,7 +31,7 @@ const STEPS = [
     num: '03',
     title: 'Track Your Biology',
     desc: 'Log your biomarkers, dosing, and outcomes. Science-backed protocol guides included with every order to help you optimize your results.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
+    Animation: BiometricTracker,
     badge: '99.4% Purity',
     reverse: false,
   },
@@ -66,8 +70,8 @@ const HowItWorks = () => {
               <h3 className="step-title">{step.title}</h3>
               <p className="step-desc">{step.desc}</p>
             </div>
-            <div className="step-image-wrap">
-              <img src={step.image} alt={step.title} loading="lazy" />
+            <div className="step-image-wrap" style={{ background: 'var(--surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <step.Animation />
               <div className="step-badge">{step.badge}</div>
             </div>
           </div>

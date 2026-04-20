@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import DnaHelix from './animations/DnaHelix';
 import GlowOrb from './GlowOrb';
 
 const Hero = () => {
@@ -13,74 +14,54 @@ const Hero = () => {
         .from('.hero-headline',     { y: 40, opacity: 0, duration: 0.9 }, '-=0.3')
         .from('.hero-subtext',      { y: 30, opacity: 0, duration: 0.7 }, '-=0.5')
         .from('.hero-cta',          { y: 20, opacity: 0, duration: 0.6 }, '-=0.3')
-        .from('.hero-product-card', { y: 60, opacity: 0, duration: 1.0 }, '-=0.4')
+        .from('.hero-visual',       { x: 60, opacity: 0, duration: 1.2 }, '-=0.8')
         .from('.hero-glow',         { scale: 0.8, opacity: 0, duration: 1.2 }, 0);
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="hero" className="hero" ref={heroRef}>
+    <section id="hero" className="hero-section" ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       {/* Glow layer */}
       <GlowOrb
         size={860}
-        opacity={0.22}
+        opacity={0.15}
         animated
         color="primary"
         className="hero-glow"
-        style={{ top: '40%', left: '50%' }}
-      />
-      <GlowOrb
-        size={420}
-        opacity={0.13}
-        color="secondary"
-        className="hero-glow"
-        style={{ top: '20%', left: '20%' }}
+        style={{ top: '30%', left: '70%' }}
       />
 
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div className="hero-tag">
-          <span className="tag-pill">
-            <span className="tag-dot" aria-hidden="true" />
-            Research-Grade Peptides
-          </span>
-        </div>
-
-        <h1 className="hero-headline">
-          Unlock Your Biological Potential
-        </h1>
-
-        <p className="hero-subtext">
-          Precision peptide formulations clinically validated for recovery, longevity, and peak human performance. Third-party tested. Trusted by thousands of biohackers and clinicians.
-        </p>
-
-        <div className="hero-cta">
-          <a href="#products" className="btn-primary" id="hero-shop-btn">
-            <span>Shop Peptides</span>
-            <span className="bg-slide" aria-hidden="true" />
-          </a>
-          <a href="#how-it-works" className="btn-ghost" id="hero-science-btn">
-            View Lab Results
-          </a>
-        </div>
-
-        <div className="hero-product-card" style={{ position: 'relative' }}>
-          <GlowOrb size={300} opacity={0.15} color="primary" className="" style={{ top: '50%', left: '50%' }} />
-          <img
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80"
-            alt="Research-grade peptide vials with teal laboratory lighting"
-            loading="eager"
-          />
-          <div className="hero-card-meta">
-            <div className="tag-pill" style={{ fontSize: '0.6875rem' }}>
+      <div className="container hero-container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)', gap: '60px', alignItems: 'center' }}>
+        <div className="hero-content" style={{ textAlign: 'left' }}>
+          <div className="hero-tag">
+            <span className="tag-pill">
               <span className="tag-dot" aria-hidden="true" />
-              GMP Certified
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
-              <span className="mono" style={{ fontSize: '1.125rem', color: 'var(--accent)', fontWeight: 600 }}>99.4%</span>
-              <span style={{ fontSize: '0.6875rem', color: 'var(--text-subtle)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Avg. Purity</span>
-            </div>
+              Research-Grade Peptides
+            </span>
           </div>
+
+          <h1 className="hero-headline" style={{ marginLeft: 0, textAlign: 'left' }}>
+            Unlock Your Biological Potential
+          </h1>
+
+          <p className="hero-subtext" style={{ marginLeft: 0, textAlign: 'left' }}>
+            Precision peptide formulations clinically validated for recovery, longevity, and peak human performance. Third-party tested. Trusted by thousands of biohackers and clinicians.
+          </p>
+
+          <div className="hero-cta" style={{ justifyContent: 'flex-start' }}>
+            <a href="#products" className="btn-primary" id="hero-shop-btn">
+              <span>Shop Peptides</span>
+              <span className="bg-slide" aria-hidden="true" />
+            </a>
+            <a href="#how-it-works" className="btn-ghost" id="hero-science-btn">
+              View Lab Results
+            </a>
+          </div>
+        </div>
+
+        <div className="hero-visual" style={{ position: 'relative' }}>
+          <DnaHelix />
         </div>
       </div>
     </section>

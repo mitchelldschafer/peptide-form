@@ -34,8 +34,16 @@ const ValueProps = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.value-card', {
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.value-props-section', start: 'top 82%', toggleActions: 'play none none none' },
+        y: 40, 
+        opacity: 0, 
+        duration: 0.8, 
+        stagger: 0.15, 
+        ease: 'power3.out',
+        scrollTrigger: { 
+          trigger: '.value-props-section', 
+          start: 'top 88%', 
+          toggleActions: 'play none none none' 
+        },
       });
     }, ref);
     return () => ctx.revert();
@@ -45,8 +53,8 @@ const ValueProps = () => {
     <section className="value-props-section" ref={ref}>
       <div className="container">
         <div className="section-header">
-          <span className="tag-pill">Why Peptide Form</span>
-          <h2>The standard the industry should hold</h2>
+          <span className="tag-pill">Science-Backed</span>
+          <h2>Industry Standards & Scientific Rigor</h2>
         </div>
         <div className="value-grid">
           {VALUE_PROPS.map(({ Icon, title, desc }) => (

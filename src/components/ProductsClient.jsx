@@ -50,7 +50,7 @@ const ProductsClient = ({ initialPeptides }) => {
         <div className="products-tables">
           {categories.map((category) => (
             <div key={category} className="products-table-group">
-              <h3>
+              <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 500 }}>
                 {category}
                 <span>{initialPeptides.filter((p) => p.Category === category).length} Items</span>
               </h3>

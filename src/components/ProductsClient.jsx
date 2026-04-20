@@ -20,14 +20,15 @@ const ProductsClient = ({ initialPeptides }) => {
         stagger: 0.15,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.products-section',
-          start: 'top 82%',
+          trigger: ref.current,
+          start: 'top 95%',
           toggleActions: 'play none none none',
         },
       });
+      ScrollTrigger.refresh();
     }, ref);
     return () => ctx.revert();
-  }, []);
+  }, [initialPeptides]);
 
   // Group peptides by category
   const categories = [...new Set(initialPeptides.map((p) => p.Category))];

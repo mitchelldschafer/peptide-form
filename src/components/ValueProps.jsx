@@ -40,11 +40,13 @@ const ValueProps = () => {
         stagger: 0.15, 
         ease: 'power3.out',
         scrollTrigger: { 
-          trigger: '.value-props-section', 
-          start: 'top 88%', 
+          trigger: ref.current, 
+          start: 'top 95%', 
           toggleActions: 'play none none none' 
         },
       });
+      // Ensure recalculation after hydration
+      ScrollTrigger.refresh();
     }, ref);
     return () => ctx.revert();
   }, []);

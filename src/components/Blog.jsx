@@ -32,8 +32,13 @@ const Blog = () => {
     const ctx = gsap.context(() => {
       gsap.from('.blog-card', {
         y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.blog-section', start: 'top 82%', toggleActions: 'play none none none' },
+        scrollTrigger: { 
+          trigger: ref.current, 
+          start: 'top 95%', 
+          toggleActions: 'play none none none' 
+        },
       });
+      ScrollTrigger.refresh();
     }, ref);
     return () => ctx.revert();
   }, []);

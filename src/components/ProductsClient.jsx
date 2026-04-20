@@ -54,52 +54,65 @@ const ProductsClient = ({ initialPeptides }) => {
         </div>
 
         <div className="products-tables">
-          {categories.map((category) => (
-            <div key={category} className="products-table-group">
-              <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 500 }}>
-                {category}
-                <span>{initialPeptides.filter((p) => p.Category === category).length} Items</span>
-              </h3>
-              <div className="table-wrapper">
-                <table className="products-table">
-                  <thead>
-                    <tr>
-                      <th>Sub-Category</th>
-                      <th>Peptide Name</th>
-                      <th>Dose</th>
-                      <th>Single Price</th>
-                      <th>Bulk Price (10+)</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {initialPeptides
-                      .filter((p) => p.Category === category)
-                      .map((p, idx) => (
-                        <tr key={idx}>
-                          <td className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-subtle)' }}>{p.SubCategory}</td>
-                          <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{p.PeptideName}</td>
-                          <td><span className="dose-tag">{p.Dose}</span></td>
-                          <td><span className="price-single">{p.SinglePrice}</span></td>
-                          <td><span className="price-bulk">{p.BulkPrice}</span></td>
-                          <td>
-                            <span className={`status-pill ${getStatusClass(p.Status)}`}>
-                              {p.Status}
-                            </span>
-                          </td>
-                          <td>
-                            <a href="#contact" className="btn-ghost" style={{ padding: '6px 14px', fontSize: '0.75rem' }}>
-                              Details
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+          {[...new Set(initialPeptides.map(p => p.Category))].map((category) => {
+            const categoryPeptides = initialPeptides.filter(p => p.Category === category);
+            const subCategories = [...new Set(categoryPeptides.map(p => p.SubCategory))];
+
+            return (
+              <div key={category} className="products-table-group">
+                <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 500 }}>
+                  {category}
+                  <span>{categoryPeptides.length} Items</span>
+                </h3>
+                
+                {subCategories.map(subCat => {
+                  const filteredPeptides = categoryPeptides.filter(p => p.SubCategory === subCat);
+                  return (
+                    <div key={subCat} className="subcategory-group">
+                      <h4 className="subcategory-title">
+                        {subCat}
+                        <span>{filteredPeptides.length} Products</span>
+                      </h4>
+                      <div className="table-wrapper">
+                        <table className="products-table">
+                          <thead>
+                            <tr>
+                              <th>Peptide Name</th>
+                              <th>Dose</th>
+                              <th>Single Price</th>
+                              <th>Bulk Price (10+)</th>
+                              <th>Status</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {filteredPeptides.map((p, idx) => (
+                              <tr key={idx}>
+                                <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{p.PeptideName}</td>
+                                <td><span className="dose-tag">{p.Dose}</span></td>
+                                <td><span className="price-single">{p.SinglePrice}</span></td>
+                                <td><span className="price-bulk">{p.BulkPrice}</span></td>
+                                <td>
+                                  <span className={`status-pill ${getStatusClass(p.Status)}`}>
+                                    {p.Status}
+                                  </span>
+                                </td>
+                                <td>
+                                  <a href="#contact" className="btn-ghost" style={{ padding: '6px 14px', fontSize: '0.75rem' }}>
+                                    Details
+                                  </a>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

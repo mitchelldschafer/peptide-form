@@ -738,6 +738,44 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   font-size: 0.75rem; 
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 4px 10px;
+  background: rgba(37, 99, 235, 0.05);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 99px;
+}
+
+.subcategory-group {
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+
+.subcategory-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0F172A; /* Navy */
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.01em;
+}
+
+.subcategory-title::before {
+  content: '';
+  width: 12px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.subcategory-title span {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-subtle);
+  font-weight: 400;
+  padding: 2px 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
 }
 
 .table-wrapper {

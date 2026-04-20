@@ -68,12 +68,21 @@ const Products = () => {
                   
                   {subCategories.map(subCat => {
                     const filteredPeptides = categoryPeptides.filter(p => p.SubCategory === subCat);
+                    const description = filteredPeptides[0]?.SubCategoryDesc;
+                    
                     return (
                       <div key={subCat} className="subcategory-group">
                         <h4 className="subcategory-title">
                           {subCat}
                           <span>{filteredPeptides.length} Products</span>
                         </h4>
+                        
+                        {description && (
+                          <div className="subcategory-desc">
+                            {description}
+                          </div>
+                        )}
+                        
                         <div className="table-wrapper">
                           <table className="products-table">
                             <thead>

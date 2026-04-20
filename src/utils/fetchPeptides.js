@@ -2,7 +2,9 @@ export const fetchPeptides = async () => {
   const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSz6C3hYjzWYmIkNM4sS50QJ8OgsWSxHJkIQxRryzVbSopIb18gQ-7u9hchha8tGw1a6H3BlZ4Z5rby/pub?output=csv';
   
   try {
-    const response = await fetch(CSV_URL);
+    const response = await fetch(`${CSV_URL}${CSV_URL.includes('?') ? '&' : '?'}t=${Date.now()}`, {
+      cache: 'no-store'
+    });
     const csvData = await response.text();
     
     // Simple CSV parser that handles basic rows

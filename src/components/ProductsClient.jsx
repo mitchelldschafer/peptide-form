@@ -81,8 +81,8 @@ const ProductsClient = ({ initialPeptides }) => {
                           <td className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-subtle)' }}>{p.SubCategory}</td>
                           <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{p.PeptideName}</td>
                           <td><span className="dose-tag">{p.Dose}</span></td>
-                          <td><span className="price-single">${p.SinglePrice}</span></td>
-                          <td><span className="price-bulk">${p.BulkPrice}</span></td>
+                          <td><span className="price-single">{p.SinglePrice}</span></td>
+                          <td><span className="price-bulk">{p.BulkPrice}</span></td>
                           <td>
                             <span className={`status-pill ${getStatusClass(p.Status)}`}>
                               {p.Status}

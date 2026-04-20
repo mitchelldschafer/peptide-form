@@ -1,105 +1,112 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import GlowOrb from './GlowOrb';
+import { fetchPeptides } from '../utils/fetchPeptides';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PRODUCTS = [
-  {
-    name: 'BPC-157',
-    tag: 'Recovery',
-    desc: 'Systemic peptide for accelerated tissue repair, joint recovery, and gut health. The most studied healing peptide.',
-    price: '$89.99',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&q=80',
-  },
-  {
-    name: 'TB-500',
-    tag: 'Recovery',
-    desc: 'Thymosin Beta-4 fragment promoting healing, flexibility, and anti-inflammation. Exceptional for soft tissue injuries.',
-    price: '$79.99',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
-  },
-  {
-    name: 'Epithalon',
-    tag: 'Anti-Aging',
-    desc: 'Telomerase-activating tetrapeptide shown to extend biological lifespan markers. The longevity gold standard.',
-    price: '$99.99',
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80',
-  },
-  {
-    name: 'Semax',
-    tag: 'Cognitive',
-    desc: 'Nootropic peptide enhancing BDNF, focus, neuroplasticity, and stress resilience for peak mental performance.',
-    price: '$74.99',
-    image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80',
-  },
-  {
-    name: 'CJC-1295',
-    tag: 'Performance',
-    desc: 'Growth hormone-releasing peptide for lean mass development, fat metabolism optimization, and sleep quality.',
-    price: '$84.99',
-    image: 'https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&q=80',
-  },
-  {
-    name: 'GHK-Cu',
-    tag: 'Anti-Aging',
-    desc: 'Copper peptide complex supporting skin regeneration, collagen synthesis, and systemic tissue renewal.',
-    price: '$69.99',
-    image: 'https://images.unsplash.com/photo-1567327631098-7c759d5c3c6e?w=600&q=80',
-  },
-];
-
 const Products = () => {
+  const [peptides, setPeptides] = useState([]);
+  const [loading, setLoading] = useState(true);
   const ref = useRef(null);
+
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.product-card', {
-        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.products-section', start: 'top 82%', toggleActions: 'play none none none' },
-      });
-    }, ref);
-    return () => ctx.revert();
+    const loadPeptides = async () => {
+      const data = await fetchPeptides();
+      setPeptides(data);
+      setLoading(false);
+    };
+    loadPeptides();
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      const ctx = gsap.context(() => {
+        gsap.from('.products-table-group', {
+          y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.products-section', start: 'top 82%', toggleActions: 'play none none none' },
+        });
+      }, ref);
+      return () => ctx.revert();
+    }
+  }, [loading]);
+
+  // Group peptides by category
+  const categories = [...new Set(peptides.map(p => p.Category))];
+
+  const getStatusClass = (status) => {
+    if (!status) return '';
+    return status.toLowerCase().replace(/\s+/g, '-');
+  };
 
   return (
     <section id="products" className="products-section" ref={ref} style={{ position: 'relative', overflow: 'hidden' }}>
-      <GlowOrb size={500} opacity={0.12} color="primary" style={{ top: '30%', left: '50%' }} />
+      <GlowOrb size={600} opacity={0.08} color="primary" style={{ top: '20%', left: '50%' }} />
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="section-header">
-          <span className="tag-pill">Products</span>
+          <span className="tag-pill">Catalog</span>
           <h2>Research-grade peptides, fully verified</h2>
           <p style={{ color: 'var(--text-secondary)', marginTop: 12 }}>Every product ships with a batch-specific Certificate of Analysis.</p>
         </div>
-        <div className="products-grid">
-          {PRODUCTS.map((p) => (
-            <article key={p.name} className="product-card">
-              <div style={{ position: 'relative', overflow: 'hidden' }}>
-                <GlowOrb size={250} opacity={0.12} color="primary" style={{ top: '50%', left: '50%' }} />
-                <img
-                  className="product-image"
-                  src={p.image}
-                  alt={`${p.name} — ${p.tag} peptide`}
-                  loading="lazy"
-                />
-              </div>
-              <div className="product-content">
-                <span className="product-tag-pill">{p.tag}</span>
-                <h3 className="product-name">{p.name}</h3>
-                <p className="product-desc">{p.desc}</p>
-                <div className="product-footer">
-                  <span className="product-price">{p.price}</span>
-                  <a href="#" className="btn-ghost" style={{ padding: '8px 18px', fontSize: '0.8125rem' }} aria-label={`Add ${p.name} to cart`}>
-                    Add to Cart
-                  </a>
+
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-subtle)' }}> Loading Catalog... </div>
+        ) : (
+          <div className="products-tables">
+            {categories.map((category) => (
+              <div key={category} className="products-table-group">
+                <h3>
+                  {category}
+                  <span>{peptides.filter(p => p.Category === category).length} Items</span>
+                </h3>
+                <div className="table-wrapper">
+                  <table className="products-table">
+                    <thead>
+                      <tr>
+                        <th>Sub-Category</th>
+                        <th>Peptide Name</th>
+                        <th>Dose</th>
+                        <th>Single Price</th>
+                        <th>Bulk Price (10+)</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {peptides
+                        .filter((p) => p.Category === category)
+                        .map((p, idx) => (
+                          <tr key={idx}>
+                            <td className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-subtle)' }}>{p.SubCategory}</td>
+                            <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{p.PeptideName}</td>
+                            <td><span className="dose-tag">{p.Dose}</span></td>
+                            <td><span className="price-single">${p.SinglePrice}</span></td>
+                            <td><span className="price-bulk">${p.BulkPrice}</span></td>
+                            <td>
+                              <span className={`status-pill ${getStatusClass(p.Status)}`}>
+                                {p.Status}
+                              </span>
+                            </td>
+                            <td>
+                              <a href="#contact" className="btn-ghost" style={{ padding: '6px 14px', fontSize: '0.75rem' }}>
+                                Details
+                              </a>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 };
+
+export default Products;
 
 export default Products;

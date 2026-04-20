@@ -33,20 +33,29 @@ const ValueProps = () => {
   const ref = useRef(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.value-card', {
-        y: 40, 
-        opacity: 0, 
-        duration: 0.8, 
-        stagger: 0.15, 
-        ease: 'power3.out',
-        scrollTrigger: { 
-          trigger: ref.current, 
-          start: 'top 95%', 
-          toggleActions: 'play none none none' 
-        },
-      });
-      // Ensure recalculation after hydration
-      ScrollTrigger.refresh();
+      // First, ensure they are visible if they were stuck
+      gsap.set('.value-card', { opacity: 1, y: 0 });
+
+      gsap.fromTo('.value-card', 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: { 
+            trigger: ref.current, 
+            start: 'top bottom-=50', 
+            toggleActions: 'play none none none' 
+          },
+        }
+      );
+
+      // Force a refresh after a delay to account for late-loading fonts/images
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500);
     }, ref);
     return () => ctx.revert();
   }, []);

@@ -30,15 +30,24 @@ const Blog = () => {
   const ref = useRef(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.blog-card', {
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { 
-          trigger: ref.current, 
-          start: 'top 95%', 
-          toggleActions: 'play none none none' 
-        },
-      });
-      ScrollTrigger.refresh();
+      gsap.set('.blog-card', { opacity: 1, y: 0 });
+
+      gsap.fromTo('.blog-card', 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: { 
+            trigger: ref.current, 
+            start: 'top bottom-=50', 
+            toggleActions: 'play none none none' 
+          },
+        }
+      );
+      setTimeout(() => ScrollTrigger.refresh(), 500);
     }, ref);
     return () => ctx.revert();
   }, []);

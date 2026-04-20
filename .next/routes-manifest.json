@@ -46,6 +46,12 @@
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/research",
+      "regex": "^/research(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/research(?:/)?$"
     }
   ],
   "dataRoutes": [],

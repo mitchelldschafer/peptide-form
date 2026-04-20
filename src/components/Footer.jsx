@@ -47,12 +47,13 @@ const Footer = () => (
           <li><a href="#products">GHK-Cu</a></li>
         </ul>
       </div>
-      <div className="footer-col">
+      <div className="footer-col" role="list" aria-label="Company Links">
         <h4>Company</h4>
         <ul>
-          <li><a href="#philosophy">About</a></li>
-          <li><a href="#how-it-works">Science</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="/#philosophy">About</a></li>
+          <li><a href="/#how-it-works">Science</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/#blog">Blog</a></li>
           <li><a href="mailto:support@peptideform.com">Contact</a></li>
         </ul>
       </div>

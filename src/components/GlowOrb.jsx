@@ -1,3 +1,4 @@
+"use client";
 const GlowOrb = ({ size = 600, opacity = 0.2, className = '', animated = false, color = 'primary' }) => {
   const rgb = color === 'secondary' ? '26, 158, 122' : '45, 212, 168';
   return (

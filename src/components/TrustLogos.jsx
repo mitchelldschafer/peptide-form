@@ -1,3 +1,4 @@
+"use client";
 const LOGOS = [
   'GMP Certified', 'NSF Tested', 'FDA Registered', 'ISO 9001', 'COA Published',
   'Third-Party Verified', 'cGMP Facility', 'Peptide Science', 'Clinical Grade',

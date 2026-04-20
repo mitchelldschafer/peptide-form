@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* ── Preset 2 — Helix (Recovery / Anti-Aging / Longevity) ─────────────── */
 :root {
@@ -36,6 +34,17 @@
   --font-head: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Overrides for Next.js defaults */
+  --background: var(--bg);
+  --foreground: var(--text-primary);
+}
+
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
 }
 
 /* ── Reset & Base ─────────────────────────────────────────────────────── */

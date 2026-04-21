@@ -19,6 +19,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Peptide Form | Elite Research Peptides',
   description: 'Research-grade peptides, fully verified. Every product ships with a batch-specific Certificate of Analysis.',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body className="bg-[#080C0C] text-[#F0FDFA] antialiased">
+      <body className="antialiased selection:bg-accent/10">
         <Navbar />
         <main>{children}</main>
         <Footer />

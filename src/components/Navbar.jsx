@@ -23,7 +23,20 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
-        <a href="#hero" className="nav-logo">Peptide Form</a>
+        <a href="#hero" className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img 
+            src="/logo.png" 
+            alt="Peptide Form Logo" 
+            style={{ 
+              height: '36px', 
+              width: '36px', 
+              borderRadius: '8px', 
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.15)',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }} 
+          />
+          <span style={{ fontWeight: 600, letterSpacing: '-0.02em' }}>Peptide Form</span>
+        </a>
         <ul className="nav-links">
           {NAV_LINKS.map(l => (
             <li key={l.label}><a href={l.href}>{l.label}</a></li>

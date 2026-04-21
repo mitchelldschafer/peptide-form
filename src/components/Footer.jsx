@@ -19,7 +19,20 @@ const Footer = () => (
   <footer className="footer" role="contentinfo">
     <div className="footer-grid">
       <div>
-        <p className="footer-brand-name">Peptide Form</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <img 
+            src="/logo.png" 
+            alt="Peptide Form Logo" 
+            style={{ 
+              height: '40px', 
+              width: '40px', 
+              borderRadius: '8px', 
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.12)',
+              border: '1px solid rgba(0,0,0,0.05)'
+            }} 
+          />
+          <p className="footer-brand-name" style={{ margin: 0 }}>Peptide Form</p>
+        </div>
         <p className="footer-tagline">
           Research-Grade Peptides for Peak Performance.<br />
           Third-party tested. GMP certified. Science-first.

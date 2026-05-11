@@ -297,7 +297,7 @@ export default function ResearchPage() {
               <div className="mt-40 p-24 border border-subtle border-radius-20 bg-surface display-none lg-display-block">
                 <Shield size={32} className="color-accent mb-16" />
                 <h5 className="mono size-13 uppercase mb-8">Data Integrity</h5>
-                <p className="size-14 color-text-secondary leading-1.5">
+                <p className="size-14 color-text-secondary leading-1-5">
                   Content is cross-referenced with FDA labeling, NEJM trials, and PubMed citations. This portal maintains a research-first standard for clinical evaluation.
                 </p>
               </div>

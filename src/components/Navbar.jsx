@@ -6,8 +6,6 @@ const NAV_LINKS = [
   { label: 'Products', href: '/#products' },
   { label: 'Science', href: '/#how-it-works' },
   { label: 'Research', href: '/research' },
-  { label: 'About', href: '/#philosophy' },
-  { label: 'Blog', href: '/#blog' },
 ];
 
 const Navbar = () => {
@@ -42,8 +40,8 @@ const Navbar = () => {
             <li key={l.label}><a href={l.href}>{l.label}</a></li>
           ))}
         </ul>
-        <a href="#products" className="btn-primary" style={{ padding: '10px 24px', fontSize: '0.875rem' }}>
-          <span>Shop Peptides</span>
+        <a href="/contact" className="btn-primary" style={{ padding: '10px 24px', fontSize: '0.875rem' }}>
+          <span>Contact Us</span>
           <span className="bg-slide" aria-hidden="true" />
         </a>
         <button
@@ -69,8 +67,8 @@ const Navbar = () => {
         {NAV_LINKS.map(l => (
           <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
         ))}
-        <a href="#products" className="btn-primary" onClick={() => setMenuOpen(false)}>
-          <span>Shop Peptides</span>
+        <a href="/contact" className="btn-primary" onClick={() => setMenuOpen(false)}>
+          <span>Contact Us</span>
           <span className="bg-slide" aria-hidden="true" />
         </a>
       </div>

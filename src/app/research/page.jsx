@@ -318,13 +318,13 @@ export default function ResearchPage() {
                       </div>
 
                       <h2 className="size-48 sm-size-64 font-400 mb-20">{item.name}</h2>
-                      <p className="size-22 color-accent leading-1.4 mb-48 font-500">
+                      <p className="size-22 color-accent leading-1-4 mb-48 font-500">
                         {item.summary}
                       </p>
 
                       <div className="display-grid sm-grid-cols-2 gap-20 mb-56">
                         {item.highlights.map((h, i) => (
-                          <div key={i} className="flex align-items-start py-14 px-20 bg-background/50 border-radius-16 border border-subtle">
+                          <div key={i} className="flex align-items-start py-14 px-20 bg-background-50 border-radius-16 border border-subtle">
                             <div className="size-6 border-radius-full bg-accent mt-10 mr-12 shrink-0" />
                             <span className="size-15 color-text-secondary">{h}</span>
                           </div>
@@ -333,13 +333,13 @@ export default function ResearchPage() {
 
                       <div className="review-text-block mb-56">
                         <h4 className="mono size-14 color-text-subtle uppercase mb-16">Biological Review</h4>
-                        <div className="size-18 color-text-secondary leading-1.7">
+                        <div className="size-18 color-text-secondary leading-1-7">
                           {item.review}
                         </div>
                       </div>
 
                       {/* Professional Note */}
-                      <div className="p-24 border-radius-16 bg-accent/5 border border-accent/20 mb-56">
+                      <div className="p-24 border-radius-16 bg-accent-5 border border-accent-20 mb-56">
                         <div className="flex align-items-center gap-12 mb-8">
                           <Shield size={18} className="color-accent" />
                           <span className="mono size-13 uppercase color-accent">Clinical Context</span>
@@ -362,9 +362,9 @@ export default function ResearchPage() {
                               href={source.link} 
                               target="_blank" 
                               rel="noopener noreferrer" 
-                              className="group flex align-items-center p-16 border-radius-16 border border-subtle hover-border-accent bg-background/30 transition-all"
+                              className="group flex align-items-center p-16 border-radius-16 border border-subtle hover-border-accent bg-background-30 transition-all"
                             >
-                              <div className="size-32 border-radius-full bg-surface-elevated flex align-items-center justify-center mr-16 group-hover-bg-accent/10 transition-colors">
+                              <div className="size-32 border-radius-full bg-surface-elevated flex align-items-center justify-center mr-16 group-hover-bg-accent-10 transition-colors">
                                 <ExternalLink size={14} className="color-text-subtle group-hover-color-accent" />
                               </div>
                               <span className="size-15 color-text-secondary group-hover-color-text-primary transition-colors flex-1">
@@ -386,6 +386,108 @@ export default function ResearchPage() {
       <Footer />
 
       <style jsx global>{`
+        /* ── Layout utilities ─────────────────────────────── */
+        .display-grid { display: grid; }
+        .grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+        .gap-48 { gap: 48px; }
+        .gap-32 { gap: 32px; }
+        .gap-20 { gap: 20px; }
+        .gap-12 { gap: 12px; }
+        .gap-8 { gap: 8px; }
+        .col-span-12 { grid-column: span 12 / span 12; }
+        .align-self-start { align-self: start; }
+        .shrink-0 { flex-shrink: 0; }
+        .flex-1 { flex: 1 1 0%; }
+        .overflow-x-auto { overflow-x: auto; }
+        .pb-16 { padding-bottom: 16px; }
+        .pt-160 { padding-top: 160px; }
+        .pb-80 { padding-bottom: 80px; }
+        .pb-160 { padding-bottom: 160px; }
+        .mt-40 { margin-top: 40px; }
+        .mb-24 { margin-bottom: 24px; }
+        .mb-56 { margin-bottom: 56px; }
+        .mb-48 { margin-bottom: 48px; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mt-10 { margin-top: 10px; }
+        .mr-12 { margin-right: 12px; }
+        .mr-16 { margin-right: 16px; }
+        .p-32 { padding: 32px; }
+        .p-24 { padding: 24px; }
+        .p-16 { padding: 16px; }
+        .py-14 { padding-top: 14px; padding-bottom: 14px; }
+        .px-20 { padding-left: 20px; padding-right: 20px; }
+        .pt-40 { padding-top: 40px; }
+        .display-none { display: none; }
+        .size-48 { font-size: 48px; }
+        .size-22 { font-size: 22px; }
+        .size-18 { font-size: 18px; }
+        .size-16 { font-size: 16px; }
+        .size-15 { font-size: 15px; }
+        .size-14 { font-size: 14px; }
+        .size-13 { font-size: 13px; }
+        .size-12 { font-size: 12px; }
+        .size-6 { width: 6px; height: 6px; min-width: 6px; }
+        .size-32 { width: 32px; height: 32px; }
+        .font-400 { font-weight: 400; }
+        .font-500 { font-weight: 500; }
+        .leading-1-7 { line-height: 1.7; }
+        .leading-1-4 { line-height: 1.4; }
+        .leading-1-5 { line-height: 1.5; }
+        .ls-08 { letter-spacing: 0.08em; }
+        .color-accent { color: var(--accent); }
+        .color-text-secondary { color: var(--text-secondary); }
+        .color-text-subtle { color: var(--text-subtle); }
+        .color-text-primary { color: var(--text-primary); }
+        .bg-accent { background-color: var(--accent); }
+        .bg-surface { background-color: var(--surface); }
+        .bg-surface-elevated { background-color: var(--surface-elevated); }
+        .bg-background-50 { background-color: rgba(248, 250, 252, 0.5); }
+        .bg-background-30 { background-color: rgba(248, 250, 252, 0.3); }
+        .bg-accent-5 { background-color: rgba(37, 99, 235, 0.05); }
+        .bg-accent-10 { background-color: rgba(37, 99, 235, 0.1); }
+        .border-subtle { border-color: var(--border-subtle) !important; }
+        .border-accent-20 { border-color: rgba(37, 99, 235, 0.2) !important; }
+        .opacity-10 { opacity: 0.1; }
+        .opacity-60 { opacity: 0.6; }
+        .border-radius-32 { border-radius: 32px; }
+        .border-radius-20 { border-radius: 20px; }
+        .border-radius-16 { border-radius: 16px; }
+        .border-radius-full { border-radius: 9999px; }
+        .align-items-start { align-items: flex-start; }
+        .align-items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .whitespace-nowrap { white-space: nowrap; }
+        .max-w-900 { max-width: 900px; }
+        .max-w-700 { max-width: 700px; }
+        .border-t { border-top-width: 1px; border-top-style: solid; }
+        .transition-all { transition: all 0.3s ease; }
+        .transition-colors { transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; }
+        .hover-border-accent:hover { border-color: var(--accent) !important; }
+        .group { position: relative; }
+        .group:hover .group-hover-bg-accent-10 { background-color: rgba(37, 99, 235, 0.1); }
+        .group:hover .group-hover-color-accent { color: var(--accent); }
+        .group:hover .group-hover-color-text-primary { color: var(--text-primary); }
+
+        @media (min-width: 1024px) {
+          .lg-col-span-4 { grid-column: span 4 / span 4; }
+          .lg-col-span-8 { grid-column: span 8 / span 8; }
+          .lg-sticky { position: sticky; top: 120px; }
+          .lg-flex-col { flex-direction: column; }
+          .lg-overflow-visible { overflow: visible; }
+          .lg-pb-0 { padding-bottom: 0; }
+          .lg-shrink-1 { flex-shrink: 1; }
+          .lg-display-block { display: block; }
+        }
+        @media (min-width: 640px) {
+          .sm-gap-64 { gap: 64px; }
+          .sm-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .sm-p-48 { padding: 48px; }
+          .sm-size-64 { font-size: 64px; }
+        }
+
         .research-nav-item {
           display: flex;
           align-items: center;

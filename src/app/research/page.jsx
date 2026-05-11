@@ -387,105 +387,103 @@ export default function ResearchPage() {
 
       <style jsx global>{`
         /* ── Layout utilities ─────────────────────────────── */
-        .display-grid { display: grid; }
-        .grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-        .gap-48 { gap: 48px; }
-        .gap-32 { gap: 32px; }
-        .gap-20 { gap: 20px; }
-        .gap-12 { gap: 12px; }
-        .gap-8 { gap: 8px; }
-        .col-span-12 { grid-column: span 12 / span 12; }
-        .align-self-start { align-self: start; }
-        .shrink-0 { flex-shrink: 0; }
-        .flex-1 { flex: 1 1 0%; }
-        .overflow-x-auto { overflow-x: auto; }
-        .pb-16 { padding-bottom: 16px; }
-        .pt-160 { padding-top: 160px; }
-        .pb-80 { padding-bottom: 80px; }
-        .pb-160 { padding-bottom: 160px; }
-        .mt-40 { margin-top: 40px; }
-        .mb-24 { margin-bottom: 24px; }
-        .mb-56 { margin-bottom: 56px; }
-        .mb-48 { margin-bottom: 48px; }
-        .mb-20 { margin-bottom: 20px; }
-        .mb-16 { margin-bottom: 16px; }
-        .mb-8 { margin-bottom: 8px; }
-        .mt-10 { margin-top: 10px; }
-        .mr-12 { margin-right: 12px; }
-        .mr-16 { margin-right: 16px; }
-        .p-32 { padding: 32px; }
-        .p-24 { padding: 24px; }
-        .p-16 { padding: 16px; }
-        .py-14 { padding-top: 14px; padding-bottom: 14px; }
-        .px-20 { padding-left: 20px; padding-right: 20px; }
-        .pt-40 { padding-top: 40px; }
-        .display-none { display: none; }
-        .size-48 { font-size: 48px; }
-        .size-22 { font-size: 22px; }
-        .size-18 { font-size: 18px; }
-        .size-16 { font-size: 16px; }
-        .size-15 { font-size: 15px; }
-        .size-14 { font-size: 14px; }
-        .size-13 { font-size: 13px; }
-        .size-12 { font-size: 12px; }
-        .size-6 { width: 6px; height: 6px; min-width: 6px; }
-        .size-32 { width: 32px; height: 32px; }
-        .font-400 { font-weight: 400; }
-        .font-500 { font-weight: 500; }
-        .leading-1-7 { line-height: 1.7; }
-        .leading-1-4 { line-height: 1.4; }
-        .leading-1-5 { line-height: 1.5; }
-        .ls-08 { letter-spacing: 0.08em; }
-        .color-accent { color: var(--accent); }
-        .color-text-secondary { color: var(--text-secondary); }
-        .color-text-subtle { color: var(--text-subtle); }
-        .color-text-primary { color: var(--text-primary); }
-        .bg-accent { background-color: var(--accent); }
-        .bg-surface { background-color: var(--surface); }
-        .bg-surface-elevated { background-color: var(--surface-elevated); }
-        .bg-background-50 { background-color: rgba(248, 250, 252, 0.5); }
-        .bg-background-30 { background-color: rgba(248, 250, 252, 0.3); }
-        .bg-accent-5 { background-color: rgba(37, 99, 235, 0.05); }
-        .bg-accent-10 { background-color: rgba(37, 99, 235, 0.1); }
-        .border-subtle { border-color: var(--border-subtle) !important; }
-        .border-accent-20 { border-color: rgba(37, 99, 235, 0.2) !important; }
-        .opacity-10 { opacity: 0.1; }
-        .opacity-60 { opacity: 0.6; }
-        .border-radius-32 { border-radius: 32px; }
-        .border-radius-20 { border-radius: 20px; }
-        .border-radius-16 { border-radius: 16px; }
-        .border-radius-full { border-radius: 9999px; }
-        .align-items-start { align-items: flex-start; }
-        .align-items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .whitespace-nowrap { white-space: nowrap; }
-        .max-w-900 { max-width: 900px; }
-        .max-w-700 { max-width: 700px; }
-        .border-t { border-top-width: 1px; border-top-style: solid; }
-        .transition-all { transition: all 0.3s ease; }
-        .transition-colors { transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; }
+        .display-grid { display: grid !important; }
+        .grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
+        /* Gap: px-based overrides Tailwind's rem scale */
+        .gap-48 { gap: 48px !important; }
+        .gap-32 { gap: 32px !important; }
+        .gap-20 { gap: 20px !important; }
+        .gap-12 { gap: 12px !important; }
+        .gap-8  { gap: 8px  !important; }
+        .col-span-12 { grid-column: span 12 / span 12 !important; }
+        .align-self-start { align-self: start !important; }
+        /* Spacing: px-based overrides Tailwind's rem scale */
+        .pb-16  { padding-bottom: 16px  !important; }
+        .pt-160 { padding-top:    160px !important; }
+        .pb-80  { padding-bottom: 80px  !important; }
+        .pb-160 { padding-bottom: 160px !important; }
+        .mt-40  { margin-top:     40px  !important; }
+        .mb-56  { margin-bottom:  56px  !important; }
+        .mb-48  { margin-bottom:  48px  !important; }
+        .mb-24  { margin-bottom:  24px  !important; }
+        .mb-20  { margin-bottom:  20px  !important; }
+        .mb-16  { margin-bottom:  16px  !important; }
+        .mb-8   { margin-bottom:  8px   !important; }
+        .mt-10  { margin-top:     10px  !important; }
+        .mr-12  { margin-right:   12px  !important; }
+        .mr-16  { margin-right:   16px  !important; }
+        .p-32   { padding: 32px !important; }
+        .p-24   { padding: 24px !important; }
+        .p-16   { padding: 16px !important; }
+        .py-14  { padding-top: 14px; padding-bottom: 14px !important; }
+        .px-20  { padding-left: 20px; padding-right: 20px !important; }
+        .pt-40  { padding-top: 40px !important; }
+        .display-none { display: none !important; }
+        /* Font sizes: Tailwind's size-* sets width+height — override completely */
+        .size-48 { font-size: 48px !important; width: auto !important; height: auto !important; }
+        .size-22 { font-size: 22px !important; width: auto !important; height: auto !important; }
+        .size-18 { font-size: 18px !important; width: auto !important; height: auto !important; }
+        .size-16 { font-size: 16px !important; width: auto !important; height: auto !important; }
+        .size-15 { font-size: 15px !important; width: auto !important; height: auto !important; }
+        .size-14 { font-size: 14px !important; width: auto !important; height: auto !important; }
+        .size-13 { font-size: 13px !important; width: auto !important; height: auto !important; }
+        .size-12 { font-size: 12px !important; width: auto !important; height: auto !important; }
+        /* Dimension utilities (intentional width+height) */
+        .size-6  { width: 6px  !important; height: 6px  !important; min-width: 6px  !important; flex-shrink: 0; }
+        .size-32 { width: 32px !important; height: 32px !important; min-width: 32px !important; }
+        .font-400 { font-weight: 400 !important; }
+        .font-500 { font-weight: 500 !important; }
+        .leading-1-7 { line-height: 1.7 !important; }
+        .leading-1-4 { line-height: 1.4 !important; }
+        .leading-1-5 { line-height: 1.5 !important; }
+        .ls-08 { letter-spacing: 0.08em !important; }
+        .color-accent        { color: var(--accent)         !important; }
+        .color-text-secondary{ color: var(--text-secondary) !important; }
+        .color-text-subtle   { color: var(--text-subtle)    !important; }
+        .color-text-primary  { color: var(--text-primary)   !important; }
+        .bg-accent           { background-color: var(--accent)           !important; }
+        .bg-surface          { background-color: var(--surface)          !important; }
+        .bg-surface-elevated { background-color: var(--surface-elevated) !important; }
+        .bg-background-50    { background-color: rgba(248,250,252,0.5)   !important; }
+        .bg-background-30    { background-color: rgba(248,250,252,0.3)   !important; }
+        .bg-accent-5         { background-color: rgba(37,99,235,0.05)    !important; }
+        .bg-accent-10        { background-color: rgba(37,99,235,0.1)     !important; }
+        .border-subtle       { border-color: var(--border-subtle)          !important; }
+        .border-accent-20    { border-color: rgba(37,99,235,0.2)           !important; }
+        .opacity-10 { opacity: 0.1 !important; }
+        .opacity-60 { opacity: 0.6 !important; }
+        .border-radius-32   { border-radius: 32px   !important; }
+        .border-radius-20   { border-radius: 20px   !important; }
+        .border-radius-16   { border-radius: 16px   !important; }
+        .border-radius-full { border-radius: 9999px !important; }
+        .align-items-start  { align-items: flex-start     !important; }
+        .align-items-center { align-items: center         !important; }
+        .justify-between    { justify-content: space-between !important; }
+        .justify-center     { justify-content: center        !important; }
+        .whitespace-nowrap  { white-space: nowrap !important; }
+        .max-w-900 { max-width: 900px !important; }
+        .max-w-700 { max-width: 700px !important; }
+        .border-t { border-top-width: 1px !important; border-top-style: solid !important; }
         .hover-border-accent:hover { border-color: var(--accent) !important; }
-        .group { position: relative; }
-        .group:hover .group-hover-bg-accent-10 { background-color: rgba(37, 99, 235, 0.1); }
-        .group:hover .group-hover-color-accent { color: var(--accent); }
-        .group:hover .group-hover-color-text-primary { color: var(--text-primary); }
+        .group:hover .group-hover-bg-accent-10      { background-color: rgba(37,99,235,0.1) !important; }
+        .group:hover .group-hover-color-accent      { color: var(--accent)       !important; }
+        .group:hover .group-hover-color-text-primary{ color: var(--text-primary) !important; }
 
         @media (min-width: 1024px) {
-          .lg-col-span-4 { grid-column: span 4 / span 4; }
-          .lg-col-span-8 { grid-column: span 8 / span 8; }
-          .lg-sticky { position: sticky; top: 120px; }
-          .lg-flex-col { flex-direction: column; }
-          .lg-overflow-visible { overflow: visible; }
-          .lg-pb-0 { padding-bottom: 0; }
-          .lg-shrink-1 { flex-shrink: 1; }
-          .lg-display-block { display: block; }
+          .lg-col-span-4    { grid-column: span 4 / span 4 !important; }
+          .lg-col-span-8    { grid-column: span 8 / span 8 !important; }
+          .lg-sticky        { position: sticky !important; top: 120px !important; }
+          .lg-flex-col      { flex-direction: column   !important; }
+          .lg-overflow-visible { overflow: visible    !important; }
+          .lg-pb-0          { padding-bottom: 0       !important; }
+          .lg-shrink-1      { flex-shrink: 1          !important; }
+          .lg-display-block { display: block          !important; }
         }
         @media (min-width: 640px) {
-          .sm-gap-64 { gap: 64px; }
-          .sm-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-          .sm-p-48 { padding: 48px; }
-          .sm-size-64 { font-size: 64px; }
+          .sm-gap-64      { gap: 64px !important; }
+          .sm-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .sm-p-48        { padding: 48px !important; }
+          .sm-size-64     { font-size: 64px !important; width: auto !important; height: auto !important; }
         }
 
         .research-nav-item {

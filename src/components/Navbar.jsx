@@ -40,7 +40,7 @@ const Navbar = () => {
             <li key={l.label}><a href={l.href}>{l.label}</a></li>
           ))}
         </ul>
-        <a href="/contact" className="btn-primary" style={{ padding: '10px 24px', fontSize: '0.875rem' }}>
+        <a href="/contact" className="btn-primary navbar-cta" style={{ padding: '10px 24px', fontSize: '0.875rem' }}>
           <span>Contact Us</span>
           <span className="bg-slide" aria-hidden="true" />
         </a>
@@ -74,8 +74,9 @@ const Navbar = () => {
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           #mobile-menu-btn { display: flex !important; }
+          .navbar-cta { display: none !important; }
         }
       `}</style>
     </>

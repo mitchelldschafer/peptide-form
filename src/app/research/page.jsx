@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import GlowOrb from '@/components/GlowOrb';
 import { BookOpen, Shield, FlaskConical, ExternalLink } from 'lucide-react';
 
@@ -240,9 +238,7 @@ export default function ResearchPage() {
     : RESEARCH_DATA.filter(item => item.category === activeCategory);
 
   return (
-    <main className="bg-background min-height-vh-100 color-text-primary overflow-hidden">
-      <Navbar />
-      
+    <>
       {/* Hero Section */}
       <section className="relative pt-160 pb-80 overflow-hidden">
         <GlowOrb size={1000} opacity={0.15} color="primary" className="absolute top-m-200 left-m-200" />
@@ -383,8 +379,6 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <Footer />
-
       <style jsx global>{`
         /* ── Layout utilities ─────────────────────────────── */
         .display-grid { display: grid !important; }
@@ -486,6 +480,25 @@ export default function ResearchPage() {
           .sm-size-64     { font-size: 64px !important; width: auto !important; height: auto !important; }
         }
 
+        /* ── Research page mobile overrides ──────────────── */
+        @media (max-width: 768px) {
+          .pt-160 { padding-top: 100px !important; }
+          .pb-80  { padding-bottom: 40px  !important; }
+          .pb-160 { padding-bottom: 80px  !important; }
+          .max-w-900, .max-w-700 { max-width: 100% !important; }
+          .size-48 { font-size: 36px !important; }
+        }
+        @media (max-width: 640px) {
+          .pt-160 { padding-top: 88px !important; }
+          .p-32   { padding: 20px !important; }
+          .sm-grid-cols-2 { grid-template-columns: 1fr !important; }
+          .gap-48 { gap: 24px !important; }
+          .mb-56  { margin-bottom: 32px !important; }
+          .mb-48  { margin-bottom: 28px !important; }
+          .filter-pill { font-size: 12px; padding: 6px 14px; }
+          .research-nav-item { padding: 12px 16px; font-size: 14px; }
+        }
+
         .research-nav-item {
           display: flex;
           align-items: center;
@@ -542,6 +555,6 @@ export default function ResearchPage() {
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .lg-sticky { top: 120px; }
       `}</style>
-    </main>
+    </>
   );
 }

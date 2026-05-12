@@ -701,16 +701,70 @@ section { padding: clamp(var(--space-xl), 8vw, var(--space-4xl)) 0; }
   .step-card { grid-template-columns: 1fr; }
   .step-card.reverse { direction: ltr; }
 }
+
+/* Tablet: hide nav links, show hamburger */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
 @media (max-width: 640px) {
   .stats-grid { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
   .value-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
   .step-card { padding: 24px; gap: 24px; }
   .hero-product-card img { height: 200px; }
   .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* Hero CTA: stack buttons vertically */
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Reduce hero visual height */
+  .hero-visual { height: 220px; }
+
+  /* Footer bottom: stack vertically */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  /* Section headers tighter on mobile */
+  .section-header { margin-bottom: 40px; }
+  .section-header h2 { margin-top: 12px; }
+
+  /* Value cards: tighter padding */
+  .value-card { padding: 28px 24px; }
+
+  /* Stat cards: tighter */
+  .stat-card { padding: 24px; }
+
+  /* Testimonial cards: tighter */
+  .testimonial-card { padding: 24px; }
+
+  /* Blog card image height */
+  .blog-card img { height: 160px !important; }
+
+  /* CTA sections */
+  .cta-block h2 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+  .cta-block .sub { font-size: 1rem; }
+
+  /* Footer */
+  .footer { padding: 48px clamp(1rem, 5vw, 2rem) 32px; }
+  .footer-grid { gap: 24px; }
+
+  /* Philosophy */
+  .philosophy-body { font-size: 1rem; }
 }
 
 /* Reduced motion */

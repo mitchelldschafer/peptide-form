@@ -1,13 +1,10 @@
 "use client";
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import GlowOrb from '@/components/GlowOrb';
 import { Mail, Phone, Clock, Shield } from 'lucide-react';
 
 export default function ContactPage() {
   return (
-    <main style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--text-primary)', overflowX: 'hidden' }}>
-      <Navbar />
+    <>
 
       {/* Hero */}
       <section style={{ position: 'relative', paddingTop: '160px', paddingBottom: '80px', overflow: 'hidden' }}>
@@ -111,7 +108,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+    </>
   );
 }
